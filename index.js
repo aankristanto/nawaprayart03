@@ -167,6 +167,50 @@ app.get('/app/iuran-bulanan/view', (req, res) => {
 });
 
 
+app.get('/app/iuran-sampah/view', (req, res) => {
+    const user = req.session.user;
+    if (!user) return res.redirect('/');
+
+    const tahuniuran = req.query.tahun || new Date().getFullYear();
+
+    let sql = `
+        SELECT ib.ID_TRX, ib.ID_BLOK, u.NAMA_KK, ib.TAHUN, ib.BULAN, ib.NOMINAL
+        FROM iuran_sampah ib
+        LEFT JOIN users u ON u.ID_BLOK = ib.ID_BLOK
+        WHERE ib.TAHUN = ?`;
+    const params = [tahuniuran];
+
+    if (user.level !== 'ADMIN') {
+        sql += ' AND ib.ID_BLOK = ?';
+        params.push(user.block);
+    }
+    sql += ' ORDER BY ib.ID_BLOK';
+
+    koneksi.query(sql, params, (err, rows) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Terjadi kesalahan pada server');
+        }
+        res.render('page-iuran-sampah', {
+            layout: 'home',
+            title: 'Nawapraya RT03 - Iuran Sampah Warga',
+            name: user.name,
+            block: user.block,
+            phone: user.phone,
+            level: user.level,
+            tahuniuran,
+            dataIuranSampah: rows
+        });
+    });
+});
+
+
+
+// route to handle page 404
+app.use((req, res) => {
+    res.redirect('/');
+});
+
 
 // listen protocol to variable port
 app.listen(port, () => {
