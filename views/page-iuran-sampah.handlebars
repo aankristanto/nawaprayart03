@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col s12">
+        <h6><b>Iuran Sampah Warga - Tahun {{tahuniuran}}</b></h6>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s9 m6">
+        <form method="GET" action="/app/iuran-bulanan/view">
+            <div class="row">
+                <div class="col s9 m6">
+                    <select name="tahun" id="tahun">
+                        <option value="2025" {{#eq tahuniuran "2025" }}selected{{/eq}}>2025</option>
+                        <option value="2026" {{#eq tahuniuran "2026" }}selected{{/eq}}>2026</option>
+                        <option value="2027" {{#eq tahuniuran "2027" }}selected{{/eq}}>2027</option>
+                    </select>
+                </div>
+                <div class="col s3 m6">
+                    <button type="submit" class="btn waves-effect waves-light blue darken-2">Cari</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <table>
+            <thead>
+                <tr class="tcell orange lighten-4">
+                    <th class="tcell" style="width: 1cm; text-align:center; font-size: small;"><small>Blok Rumah</small>
+                    </th>
+                    <th class="tcell" style="width: 3cm; font-size: small;"><small>Nama KK</small></th>
+                    <th class="tcell" style="width: 3cm; text-align:center; font-size: small;"><small>Bulan</small></th>
+                    <th class="tcell" style="width: 3cm; text-align:center; font-size: small;"><small>Nominal</small>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each dataIuranBulanan}}
+                <tr class="tcell">
+                    <td class="tcell" style="width: 1cm; font-size: small;"><small>{{ID_BLOK}}</small></td>
+                    <td class="tcell" style="width: 3cm; font-size: small;">
+                        <small>{{NAMA_KK}}</small>
+                    </td>
+                    <td class="tcell" style="width: 3cm; font-size: small;">
+                        <small>{{BULAN}}</small>
+                    </td>
+                    <td class="tcell" style="width: 3cm; text-align:right; font-size: small;">
+                        <small>Rp. {{NOMINAL}}</small>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</div>

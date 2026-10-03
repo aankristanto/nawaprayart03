@@ -1,0 +1,23 @@
+{
+  "name": "nawaprayart03",
+  "version": "1.0.0",
+  "description": "app manajemen rt 03",
+  "license": "ISC",
+  "author": "Aan Kristanto N",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.3.0",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "express-handlebars": "^9.0.1",
+    "express-session": "^1.19.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.24.5",
+    "sequelize": "^6.37.8"
+  }
+}

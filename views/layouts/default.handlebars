@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection,print" />
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <title>{{title}}</title>
+    <style>
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(/fonts/material-icons.woff2) format('woff2')
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: 400;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {{{body}}}
+    </div>
+    <script>
+        M.AutoInit();
+    </script>
+</body>
+
+</html>
